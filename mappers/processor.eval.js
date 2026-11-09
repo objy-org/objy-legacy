@@ -8,12 +8,10 @@ export default function (OBJY, mapperOptions) {
                     if ((mapperOptions || {}).hasOwnProperty('parse')) {
                         mapperOptions.parse(dsl);
                     } else {
-                        
                         if (typeof dsl === 'function') {
-                            console.log(dsl.toString())
-                            dsl(done, obj);
-                        } 
-                        else eval(dsl);
+                            console.log(dsl.toString());
+                            dsl(done, afterObj);
+                        } else eval(dsl);
                     }
                 } catch (e) {
                     OBJY.Logger.error(e);
@@ -24,7 +22,7 @@ export default function (OBJY, mapperOptions) {
                     if ((mapperOptions || {}).hasOwnProperty('parse')) {
                         mapperOptions.parse(dsl);
                     } else {
-                        if (typeof dsl === 'function') dsl(done, obj);
+                        if (typeof dsl === 'function') dsl(done, afterObj);
                         else eval(dsl);
                     }
                 } catch (e) {
@@ -34,4 +32,4 @@ export default function (OBJY, mapperOptions) {
             }
         },
     });
-};
+}
