@@ -12,6 +12,7 @@ var isObject = function(a) {
     return (!!a) && (a.constructor === Object);
 };
 
+
 import generalAttributes from './instance/attributes.js'
 import generalFunctions from './instance/general.js'
 import applyFunctions from './instance/apply.js'
