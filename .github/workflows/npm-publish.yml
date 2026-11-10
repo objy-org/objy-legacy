@@ -8,7 +8,7 @@ on:
         types: [created]
 
 permissions:
-    id-token: write # Required for OIDC
+#    id-token: write # Required for OIDC
     contents: read
 
 jobs:
@@ -28,4 +28,9 @@ jobs:
             - run: npm i
             - run: npm run build --if-present
             #- run: npm test
-            - run: npm publish
+            - name: Publish to npm
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+              run: |
+                  npm whoami --registry=https://registry.npmjs.org/
+                  npm publish
